@@ -28,15 +28,15 @@ export default function TrustStrip() {
     }
 
     let scrollPosition = 0;
-    const speed = 0.3;
-    const maxScroll = 50; // Half the total width since content is duplicated
+    const speed = 0.5; // pixels per frame
+    const halfWidth = scrollElement.scrollWidth / 2;
 
     // Set initial transform to avoid layout shift
-    scrollElement.style.transform = `translateX(0%)`;
+    scrollElement.style.transform = `translateX(0px)`;
 
     const animate = () => {
-      scrollPosition = (scrollPosition + speed) % maxScroll;
-      scrollElement.style.transform = `translateX(-${scrollPosition}%)`;
+      scrollPosition = (scrollPosition + speed) % halfWidth;
+      scrollElement.style.transform = `translateX(-${scrollPosition}px)`;
       animationIdRef.current = requestAnimationFrame(animate);
     };
 

@@ -90,6 +90,23 @@ p {
   opacity: 0.6;
 }
 
+.btn:disabled:hover,
+.btn:disabled:focus-visible {
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-primary:disabled:hover,
+.btn-primary:disabled:focus-visible {
+  background-color: var(--accent-primary);
+}
+
+.btn-secondary:disabled:hover,
+.btn-secondary:disabled:focus-visible {
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+}
+
 .btn-primary {
   background-color: var(--accent-primary);
   color: #fff;

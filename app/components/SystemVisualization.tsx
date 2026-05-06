@@ -25,7 +25,11 @@ export default function SystemVisualization() {
       canvas.height = height * dpr;
 
       // Reset transform before scaling to prevent blur on resize
-      ctx.resetTransform();
+      if (typeof ctx.resetTransform === 'function') {
+        ctx.resetTransform();
+      } else {
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+      }
 
       // Scale context to match device pixel ratio
       ctx.scale(dpr, dpr);

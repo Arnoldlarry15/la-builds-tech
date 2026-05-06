@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         <div className={styles.divider} />
         <div className={styles.bottom}>
-          <p className={styles.copyright} suppressHydrationWarning>© {currentYear ?? new Date().getFullYear()} LA Builds. All rights reserved.</p>
+          <p className={styles.copyright}>© {currentYear} LA Builds. All rights reserved.</p>
           <p className={styles.tagline}>Built with intention.</p>
         </div>
       </div>
