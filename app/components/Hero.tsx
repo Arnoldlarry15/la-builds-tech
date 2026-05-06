@@ -13,7 +13,7 @@ export default function Hero() {
             Custom AI workflows, automation systems, and intelligent tooling for modern businesses and builders.
           </p>
           <div className={styles.buttons}>
-            <a href="#contact" className="btn btn-primary">
+            <a href="https://calendly.com/labuilds/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Book a Consultation
             </a>
             <a href="#projects" className="btn btn-secondary">

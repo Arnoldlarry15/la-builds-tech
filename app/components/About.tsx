@@ -1,7 +1,7 @@
 import styles from './About.module.css';
 
 const principles = [
-  { title: 'Practical Over Hype', description: 'We build systems that work, not concepts that sound impressive.' },
+  { title: 'Practical Over Hype', description: 'I build systems that work, not concepts that sound impressive.' },
   { title: 'Human-Centered AI', description: 'Technology amplifies human capability, not replaces it.' },
   { title: 'Modular Systems', description: 'Flexible, reusable components that adapt to your workflow.' },
   { title: 'Security Conscious', description: 'Defense-first architecture from day one.' },
@@ -18,7 +18,7 @@ export default function About() {
             LA Builds is an independent AI research and systems engineering studio focused on practical AI infrastructure, workflow automation, adversarial testing, and human-centered tooling.
           </p>
           <p className={styles.bio}>
-            We believe technology should reduce friction, not add it. Every system we build is designed to scale, integrate cleanly, and empower your team.
+            I believe technology should reduce friction, not add it. Every system I build is designed to scale, integrate cleanly, and empower your team.
           </p>
         </div>
         <div className={styles.right}>

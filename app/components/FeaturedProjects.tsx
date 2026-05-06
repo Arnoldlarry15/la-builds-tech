@@ -5,21 +5,29 @@ const projects = [
     name: 'Red Set ProtoCell',
     summary: 'Advanced molecular simulation framework with AI-powered analysis',
     stack: ['Python', 'React', 'TensorFlow', 'FastAPI'],
+    demoUrl: 'https://redset.app',
+    githubUrl: 'https://github.com/Arnoldlarry15/red-set-protocell',
   },
   {
     name: 'ARES Dashboard',
     summary: 'Real-time AI system monitoring and optimization platform',
     stack: ['Next.js', 'PostgreSQL', 'WebSocket', 'D3.js'],
+    demoUrl: 'https://ares-dashboard.mauve.vercel.app',
+    githubUrl: 'https://github.com/Arnoldlarry15/ARES-Dashboard',
   },
   {
     name: 'AI Control Plane',
     summary: 'Centralized orchestration system for multi-model AI workflows',
     stack: ['Go', 'Kubernetes', 'gRPC', 'React'],
+    demoUrl: '',
+    githubUrl: 'https://github.com/Arnoldlarry15/ai-control-plane',
   },
   {
     name: 'CaptureFlow',
     summary: 'Intelligent data extraction and workflow automation suite',
     stack: ['Python', 'OpenCV', 'LLMs', 'Node.js'],
+    demoUrl: '',
+    githubUrl: 'https://github.com/Arnoldlarry15/capture-flow',
   },
 ];
 
@@ -43,12 +51,20 @@ export default function FeaturedProjects() {
                 </div>
               </div>
               <div className={styles.actions}>
-                <button type="button" className="btn btn-secondary" disabled>
-                  Live Demo
-                </button>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-                  GitHub
-                </a>
+                {project.demoUrl ? (
+                  <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                    Live Demo
+                  </a>
+                ) : (
+                  <span className={styles.comingSoon}>Coming Soon</span>
+                )}
+                {project.githubUrl ? (
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                    GitHub
+                  </a>
+                ) : (
+                  <span className={styles.comingSoon}>Private Repo</span>
+                )}
               </div>
             </div>
           ))}
