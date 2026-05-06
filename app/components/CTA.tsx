@@ -9,7 +9,7 @@ export default function CTA() {
           Whether you need automation, AI infrastructure, or operational tooling, I help transform complexity into scalable systems.
         </p>
         <div className={styles.buttons}>
-          <a href="mailto:labuilds@proton.me" className="btn btn-primary">
+          <a href="https://calendly.com/labuilds/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             Schedule Consultation
           </a>
           <a href="mailto:labuilds@proton.me" className="btn btn-secondary">
