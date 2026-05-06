@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './TrustStrip.module.css';
 
 const items = [
@@ -12,25 +12,45 @@ const items = [
 ];
 
 export default function TrustStrip() {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const animationIdRef = useRef<number>();
 
   useEffect(() => {
-    let animationId: number;
-    
+    const scrollElement = scrollRef.current;
+    if (!scrollElement) return;
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      // Disable animation if user prefers reduced motion
+      return;
+    }
+
+    let scrollPosition = 0;
+    const speed = 0.3;
+    const maxScroll = 50; // Half the total width since content is duplicated
+
     const animate = () => {
-      setScrollPosition((prev) => (prev + 0.3) % 100);
-      animationId = requestAnimationFrame(animate);
+      scrollPosition = (scrollPosition + speed) % 100;
+      scrollElement.style.transform = `translateX(-${scrollPosition}%)`;
+      animationIdRef.current = requestAnimationFrame(animate);
     };
 
-    animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationId);
+    animationIdRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationIdRef.current !== undefined) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
+    };
   }, []);
 
   return (
     <section className={styles.strip}>
-      <div className={styles.scroll} style={{ transform: `translateX(-${scrollPosition}%)` }}>
+      <div ref={scrollRef} className={styles.scroll}>
         {[...items, ...items].map((item, idx) => (
-          <div key={idx} className={styles.item}>
+          <div key={`${item}-${Math.floor(idx / items.length)}`} className={styles.item}>
             <span>{item}</span>
             <span className={styles.separator}>•</span>
           </div>

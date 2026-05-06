@@ -1,7 +1,15 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState<number>();
+
+  useEffect(() => {
+    // Compute year on client side to avoid static generation mismatches
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className={styles.footer}>
@@ -23,7 +31,7 @@ export default function Footer() {
         </div>
         <div className={styles.divider} />
         <div className={styles.bottom}>
-          <p className={styles.copyright}>© {currentYear} LA Builds. All rights reserved.</p>
+          <p className={styles.copyright}>© {currentYear ?? new Date().getFullYear()} LA Builds. All rights reserved.</p>
           <p className={styles.tagline}>Built with intention.</p>
         </div>
       </div>

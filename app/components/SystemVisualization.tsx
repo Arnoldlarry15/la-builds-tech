@@ -5,6 +5,7 @@ import styles from './SystemVisualization.module.css';
 
 export default function SystemVisualization() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationIdRef = useRef<number>();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,12 +14,23 @@ export default function SystemVisualization() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    // Account for device pixel ratio to prevent blur on retina displays
+    const dpr = window.devicePixelRatio || 1;
 
-    const width = canvas.width;
-    const height = canvas.height;
+    const updateCanvasSize = () => {
+      const width = canvas.offsetWidth;
+      const height = canvas.offsetHeight;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+
+      // Scale context to match device pixel ratio
+      ctx.scale(dpr, dpr);
+
+      return { width, height };
+    };
+
+    let { width, height } = updateCanvasSize();
     let animationFrame = 0;
 
     // Node positions
@@ -31,7 +43,7 @@ export default function SystemVisualization() {
 
     const drawNode = (node: typeof nodes[0], pulse: number) => {
       const radius = 24 + pulse * 4;
-      
+
       // Outer glow
       ctx.fillStyle = `rgba(${node.color === '#00c2ff' ? '0, 194, 255' : '124, 58, 237'}, 0.1)`;
       ctx.beginPath();
@@ -91,18 +103,32 @@ export default function SystemVisualization() {
       });
 
       animationFrame++;
-      requestAnimationFrame(animate);
+      animationIdRef.current = requestAnimationFrame(animate);
     };
 
     animate();
 
     const handleResize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      const newDimensions = updateCanvasSize();
+      width = newDimensions.width;
+      height = newDimensions.height;
+
+      // Update node positions for new dimensions
+      nodes[0].x = width * 0.15;
+      nodes[1].x = width * 0.4;
+      nodes[2].x = width * 0.65;
+      nodes[3].x = width * 0.9;
+      nodes.forEach(node => node.y = height / 2);
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (animationIdRef.current !== undefined) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
+    };
   }, []);
 
   return <canvas ref={canvasRef} className={styles.canvas} />;
