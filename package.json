@@ -2,6 +2,10 @@
   "name": "la-builds-landing",
   "version": "1.0.0",
   "description": "LA Builds - AI Systems Engineering Studio",
+  "private": true,
+  "engines": {
+    "node": ">=18.17"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
