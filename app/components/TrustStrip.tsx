@@ -31,8 +31,11 @@ export default function TrustStrip() {
     const speed = 0.3;
     const maxScroll = 50; // Half the total width since content is duplicated
 
+    // Set initial transform to avoid layout shift
+    scrollElement.style.transform = `translateX(0%)`;
+
     const animate = () => {
-      scrollPosition = (scrollPosition + speed) % 100;
+      scrollPosition = (scrollPosition + speed) % maxScroll;
       scrollElement.style.transform = `translateX(-${scrollPosition}%)`;
       animationIdRef.current = requestAnimationFrame(animate);
     };

@@ -85,6 +85,11 @@ p {
   text-align: center;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .btn-primary {
   background-color: var(--accent-primary);
   color: #fff;

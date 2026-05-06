@@ -43,7 +43,7 @@ export default function FeaturedProjects() {
                 </div>
               </div>
               <div className={styles.actions}>
-                <button className="btn btn-secondary" disabled>
+                <button type="button" className="btn btn-secondary" disabled>
                   Live Demo
                 </button>
                 <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
