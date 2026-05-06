@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState<number>();
+  const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear());
 
   useEffect(() => {
-    // Compute year on client side to avoid static generation mismatches
     setCurrentYear(new Date().getFullYear());
   }, []);
 
@@ -26,7 +25,7 @@ export default function Footer() {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a href="mailto:contact@labuilds.com">Email</a>
+            <a href="mailto:labuilds@proton.me">Email</a>
           </div>
         </div>
         <div className={styles.divider} />

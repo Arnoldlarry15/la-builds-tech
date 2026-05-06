@@ -4,7 +4,7 @@ const steps = [
   {
     number: 1,
     title: 'Discovery',
-    description: 'Understand workflows and pain points. We map your current systems and identify opportunities.',
+    description: 'Understand workflows and pain points. I map your current systems and identify opportunities.',
   },
   {
     number: 2,
@@ -27,7 +27,7 @@ export default function Process() {
   return (
     <section className={styles.process}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>Our Process</h2>
+        <h2 className={styles.heading}>My Process</h2>
         <div className={styles.timeline}>
           {steps.map((step, index) => (
             <div key={step.number} className={styles.step}>

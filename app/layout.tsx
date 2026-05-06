@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'LA Builds - AI Systems Engineering',
-  description: 'Custom AI workflows, automation systems, and intelligent tooling for modern businesses and builders.',
+  title: 'LA Builds - Independent AI Research & Development Lab',
+  description: 'Independent AI research and development lab specializing in custom AI workflows, automation systems, adversarial testing, and intelligent tooling.',
 };
 
 export const viewport: Viewport = {
