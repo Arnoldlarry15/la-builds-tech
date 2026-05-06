@@ -19,11 +19,23 @@ export default function Footer() {
             <p>AI Systems Engineering Studio</p>
           </div>
           <div className={styles.links}>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/Arnoldlarry15" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://linkedin.com/in/larry-arnold" target="_blank" rel="noopener noreferrer">
               LinkedIn
+            </a>
+            <a href="https://linkedin.com/company/labuilds" target="_blank" rel="noopener noreferrer">
+              LinkedIn (LA Builds)
+            </a>
+            <a href="https://x.com/labuilds" target="_blank" rel="noopener noreferrer">
+              X
+            </a>
+            <a href="https://youtube.com/@labuilds" target="_blank" rel="noopener noreferrer">
+              YouTube
+            </a>
+            <a href="https://instagram.com/labuilds" target="_blank" rel="noopener noreferrer">
+              Instagram
             </a>
             <a href="mailto:labuilds@proton.me">Email</a>
           </div>
